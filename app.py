@@ -7,6 +7,7 @@ def home():
     return render_template('login.html')
 
 
+
 lista_musicas = [
     {"musica": "Wish you were here", "artista": "Pink Floyd", "genero": "Rock"},
     {"musica": "Feel Good Inc.", "artista": "Gorillaz", "genero": "Rap"},
@@ -34,7 +35,7 @@ def save():
     new = { "musica": new_music, "artista": new_artist, "genero": id_gender}
     lista_musicas.append(new)
     
-    return redirect('https://5000-scarlet-tortoise-9tqc3dof.ws-us18.gitpod.io/')
+    return redirect('https://5000-coffee-moth-o1t1j4y3.ws-us18.gitpod.io/')
 
 
 @app.route('/delete')
@@ -48,8 +49,13 @@ def remove():
     new_artist = request.form['artist']       # <input name="new_artist"/>
     id_gender = request.form['gender']       # <input name="new_gender"/>
     deletar = { "musica": new_music, "artista": new_artist, "genero": id_gender}
-    lista_musicas.append(deletar.clear())
-           
-    return redirect('https://5000-scarlet-tortoise-9tqc3dof.ws-us18.gitpod.io/')
+    lista_musicas.remove(deletar)
+
+
+    return redirect('https://5000-coffee-moth-o1t1j4y3.ws-us18.gitpod.io/')
+
+@app.route('/search')
+def pesquisar():
+    return render_template('search.html')
 
 app.run(debug=True)
